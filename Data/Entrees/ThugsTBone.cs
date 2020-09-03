@@ -8,10 +8,39 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class ThugsTBone
+    public class ThugsTBone
     {
+        /// <summary>
+        /// gets price of entree
+        /// </summary>
+        /// <param name="args"></param>    
+        public double Price
+        {
+            get => 6.44;
+        }
+
+        /// <summary>
+        /// gets calories of entree
+        /// </summary>
+        public uint Calories
+        {
+            get => 982;
+        }
+
+        /// <summary>
+        /// gets special instructions of entree
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                return instructions;
+            }         
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -19,17 +48,6 @@ namespace Data.Entrees
         public override string ToString()
         {
             return "Thugs T-Bone";
-        }
-        /// <summary>
-        /// sets properties of entree
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double Price = 6.44;
-            uint Calories = 982;
-
-            List<String> SpecialInstructions = new List<string>();          
         }
     }
 }

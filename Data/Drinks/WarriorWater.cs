@@ -9,10 +9,63 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    class WarriorWater
+    public class WarriorWater
     {
+        /// <summary>
+        /// gets/sets ice
+        /// </summary>
+        public bool Ice { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets size
+        /// </summary>
+        public Size Size { get; set; } = Size.Small;
+
+        /// <summary>
+        /// gets/sets lemon
+        /// </summary>
+        public bool Lemon { get; set; } = false;
+
+        /// <summary>
+        /// gets drink price
+        /// </summary>
+        public double Price
+        {
+            get
+            {
+                double price = 0;
+                return price;
+            }
+        }
+
+        /// <summary>
+        /// gets drink calories
+        /// </summary>
+        public double Calories
+        {
+            get
+            {
+                double calories = 0;
+                return calories;
+            }
+        }
+
+        /// <summary>
+        /// gets special instructions of drink
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                if (!Ice) instructions.Add("Hold ice");
+                if (!Lemon) instructions.Add("Add lemon");
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -32,29 +85,6 @@ namespace Data.Drinks
             {
                 return "Large Warrior Water";
             }
-        }
-
-        /// <summary>
-        /// sets property of side
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double price = 0.00;
-            uint calories = 0;
-            List<string> SpecialInstructions = new List<string>();
-            Size size = Size.Small;
-            bool Ice = true;
-            bool Lemon = false;
-
-            if (Ice == false)
-            {
-                SpecialInstructions.Add("Hold ice");
-            }
-            if (Lemon == true)
-            {
-                SpecialInstructions.Add("Add lemon");
-            }         
         }
     }
 }

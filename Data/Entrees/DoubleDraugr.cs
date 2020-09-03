@@ -8,10 +8,87 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class DoubleDraugr
-    { 
+    public class DoubleDraugr
+    {
+        /// <summary>
+        /// gets/sets Bun bool
+        /// </summary>
+        public bool Bun { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Ketchup bool
+        /// </summary>
+        public bool Ketchup { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Mustard bool
+        /// </summary>
+        public bool Mustard { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Pickle bool
+        /// </summary>
+        public bool Pickle { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Cheese bool
+        /// </summary>
+        public bool Cheese { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Tomato bool
+        /// </summary>
+        public bool Tomato { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Lettuce bool
+        /// </summary>
+        public bool Lettuce { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Mayo bool
+        /// </summary>
+        public bool Mayo { get; set; } = true;
+
+        /// <summary>
+        /// gets price of burger
+        /// </summary>
+        /// <param name="args"></param>    
+        public double Price
+        {
+            get => 7.32;
+        }
+
+        /// <summary>
+        /// gets calories of burger
+        /// </summary>
+        public uint Calories
+        {
+            get => 843;
+        }
+
+        /// <summary>
+        /// gets special instructions of burger
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                if (!Bun) instructions.Add("Hold bun");
+                if (!Ketchup) instructions.Add("Hold ketchup");
+                if (!Mustard) instructions.Add("Hold mustard");
+                if (!Pickle) instructions.Add("Hold pickle");
+                if (!Cheese) instructions.Add("Hold cheese");
+                if (!Tomato) instructions.Add("Hold tomato");
+                if (!Lettuce) instructions.Add("Hold lettuce");
+                if (!Mayo) instructions.Add("Hold mayo");
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -19,59 +96,6 @@ namespace Data.Entrees
         public override string ToString()
         {
             return "Double Draugr";
-        }
-        /// <summary>
-        /// sets properties of entree
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double Price = 7.32;
-            uint Calories = 843;
-
-            bool Bun = true;
-            bool Ketchup = true;
-            bool Mustard = true;
-            bool Pickles = true;
-            bool Cheese = true;
-            bool Tomato = true;
-            bool Lettuce = true;
-            bool Mayo = true; 
-
-            List<String> SpecialInstructions = new List<string>();
-
-            if (Bun == false)
-            {
-                SpecialInstructions.Add("Hold bun");
-            }
-            if (Ketchup == false)
-            {
-                SpecialInstructions.Add("Hold ketchup");
-            }
-            if (Mustard == false)
-            {
-                SpecialInstructions.Add("Hold mustard");
-            }
-            if (Pickles == false)
-            {
-                SpecialInstructions.Add("Hold pickle");
-            }
-            if (Cheese == false)
-            {
-                SpecialInstructions.Add("Hold cheese");
-            }
-            if (Tomato == false)
-            {
-                SpecialInstructions.Add("Hold tomato");
-            }
-            if (Lettuce == false)
-            {
-                SpecialInstructions.Add("Hold lettuce");
-            }
-            if (Mayo == false)
-            {
-                SpecialInstructions.Add("Hold mayo");
-            }
         }
     }
 }

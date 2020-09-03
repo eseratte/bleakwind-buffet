@@ -9,17 +9,81 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    class CandlehearthCoffee
+    public class CandlehearthCoffee
     {
+        /// <summary>
+        /// gets/sets ice
+        /// </summary>
+        public bool Ice { get; set; } = false;
+
+        /// <summary>
+        /// gets/sets decaf
+        /// </summary>
+        public bool Decaf { get; set; } = false;
+
+        /// <summary>
+        /// gets/sets ice
+        /// </summary>
+        public bool RoomForCream { get; set; } = false;
+
+        /// <summary>
+        /// gets/sets size
+        /// </summary>
+        public Size Size { get; set; } = Size.Small;
+
+        /// <summary>
+        /// gets drink price
+        /// </summary>  
+        Size s = Size.Small;
+        public double Price
+        {
+            get
+            {
+                double price = 0;
+                if (s == Size.Small) price = 0.75;
+                if (s == Size.Medium) price = 1.25;
+                if (s == Size.Large) price = 1.75;
+                return price;
+            }
+        }
+
+        /// <summary>
+        /// gets calories of drink
+        /// </summary>
+        public uint Calories
+        {
+            get
+            {
+                uint calories = 0;
+                if (s == Size.Small) calories = 7;
+                if (s == Size.Medium) calories = 10;
+                if (s == Size.Large) calories = 20;
+                return calories;
+            }
+        }
+
+        /// <summary>
+        /// gets special instructions of drink
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                if (!Ice) instructions.Add("Add ice");
+                if (!RoomForCream) instructions.Add("Add cream");
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
         /// <returns>coffee size/caffiene</returns>
         public override string ToString()
         {
-            Size s = Size.Small;
             bool Decaf = false;
             if (s == Size.Small)
             {
@@ -31,7 +95,7 @@ namespace Data.Drinks
                 {
                     return "Small Decaf Candlehearth Coffee";
                 }
-                
+
             }
             else if (s == Size.Medium)
             {
@@ -54,45 +118,6 @@ namespace Data.Drinks
                 {
                     return "Large Decaf Candlehearth Coffee";
                 }
-            }
-        }
-
-        /// <summary>
-        /// sets property of side
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double price;
-            uint calories;
-            List<string> SpecialInstructions = new List<string>();
-            Size size = Size.Small;
-            bool Ice = false;
-            bool RoomForCream = false;           
-
-            if (Ice == true)
-            {
-                SpecialInstructions.Add("Add ice");
-            }
-            if (RoomForCream == true)
-            {
-                SpecialInstructions.Add("Add cream");
-            }
-
-            if (size == Size.Small)
-            {
-                price = 0.62;
-                calories = 44;
-            }
-            else if (size == Size.Medium)
-            {
-                price = 0.87;
-                calories = 88;
-            }
-            else
-            {
-                price = 1.01;
-                calories = 132;
             }
         }
     }

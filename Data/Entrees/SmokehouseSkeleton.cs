@@ -8,10 +8,63 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class SmokehouseSkeleton
+    public class SmokehouseSkeleton
     {
+        /// <summary>
+        /// gets/sets SausageLink bool
+        /// </summary>
+        public bool SausageLink { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Egg bool
+        /// </summary>
+        public bool Egg { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets HashBrowns bool
+        /// </summary>
+        public bool HashBrowns { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Pancake bool
+        /// </summary>
+        public bool Pancake { get; set; } = true;
+
+        /// <summary>
+        /// gets price of entree
+        /// </summary>
+        /// <param name="args"></param>    
+        public double Price
+        {
+            get => 5.62;
+        }
+
+        /// <summary>
+        /// gets calories of entree
+        /// </summary>
+        public uint Calories
+        {
+            get => 602;
+        }
+
+        /// <summary>
+        /// gets special instructions of entree
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                if (!SausageLink) instructions.Add("Hold sausage");
+                if (!Egg) instructions.Add("Hold eggs");
+                if (!HashBrowns) instructions.Add("Hold hash browns");
+                if (!Pancake) instructions.Add("Hold pancakes");
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -19,39 +72,6 @@ namespace Data.Entrees
         public override string ToString()
         {
             return "Smokehouse Skeleton";
-        }
-        /// <summary>
-        /// sets properties of entree
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double Price = 5.62;
-            uint Calories = 602;
-
-            bool Sausage = true;
-            bool Egg = true;
-            bool Hashbrown = true;
-            bool Pancake = true;
-
-            List<String> SpecialInstructions = new List<string>();
-
-            if (Sausage == false)
-            {
-                SpecialInstructions.Add("Hold sausage");
-            }
-            if (Egg == false)
-            {
-                SpecialInstructions.Add("Hold egg");
-            }
-            if (Hashbrown == false)
-            {
-                SpecialInstructions.Add("Hold hash browns");
-            }
-            if (Pancake == false)
-            {
-                SpecialInstructions.Add("Hold pancake");
-            }
         }
     }
 }

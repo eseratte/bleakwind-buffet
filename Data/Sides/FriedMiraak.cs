@@ -9,10 +9,58 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Sides
+namespace BleakwindBuffet.Data.Sides
 {
-    class FriedMiraak
+    public class FriedMiraak
     {
+        /// <summary>
+        /// gets/sets size
+        /// </summary>
+        public Size Size { get; set; } = Size.Small;
+
+        /// <summary>
+        /// gets price
+        /// </summary>
+        Size s = Size.Small;
+        public double Price
+        {
+            get
+            {
+                double price = 0;
+                if (s == Size.Small) price = 1.78;
+                if (s == Size.Medium) price = 2.01;
+                if (s == Size.Large) price = 2.88;
+                return price;
+            }
+        }
+
+        /// <summary>
+        /// gets calories
+        /// </summary>
+        public uint Calories
+        {
+            get
+            {
+                uint calories = 0;
+                if (s == Size.Small) calories = 151;
+                if (s == Size.Medium) calories = 236;
+                if (s == Size.Large) calories = 306;
+                return calories;
+            }
+        }
+
+        /// <summary>
+        /// gets special instructions
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -31,34 +79,6 @@ namespace Data.Sides
             else
             {
                 return "Large Fried Miraak";
-            }
-
-        }
-
-        /// <summary>
-        /// sets property of side
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double price;
-            uint calories;
-            Size size = Size.Small;
-
-            if (size == Size.Small)
-            {
-                price = 1.78;
-                calories = 151;
-            }
-            else if (size == Size.Medium)
-            {
-                price = 2.01;
-                calories = 236;
-            }
-            else
-            {
-                price = 2.88;
-                calories = 306;
             }
         }
     }

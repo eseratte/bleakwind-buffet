@@ -8,10 +8,69 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class BriarheartBurger
+    public class BriarheartBurger
     {
+        /// <summary>
+        /// gets/sets Bun bool
+        /// </summary>
+        public bool Bun { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Ketchup bool
+        /// </summary>
+        public bool Ketchup { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Mustard bool
+        /// </summary>
+        public bool Mustard { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Pickle bool
+        /// </summary>
+        public bool Pickle { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets Cheese bool
+        /// </summary>
+        public bool Cheese { get; set; } = true;                 
+
+        /// <summary>
+        /// gets price of burger
+        /// </summary>
+        /// <param name="args"></param>    
+        public double Price
+        {
+            get => 6.32;
+        }
+
+        /// <summary>
+        /// gets calories of burger
+        /// </summary>
+        public uint Calories
+        {
+            get => 743;
+        }
+
+        /// <summary>
+        /// gets special instructions of burger
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                if (!Bun) instructions.Add("Hold bun");
+                if (!Ketchup) instructions.Add("Hold ketchup");
+                if (!Mustard) instructions.Add("Hold mustard");
+                if (!Pickle) instructions.Add("Hold pickle");
+                if (!Cheese) instructions.Add("Hold cheese");
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -20,44 +79,7 @@ namespace Data.Entrees
         {
             return "Briarheart Burger";
         }
-        /// <summary>
-        /// sets properties of entree
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double Price = 6.32;
-            uint Calories = 743;
-
-            bool Bun = true;
-            bool Ketchup = true;
-            bool Mustard = true;
-            bool Pickles = true;
-            bool Cheese = true;
-
-            List<String> SpecialInstructions = new List<string>();
-
-            if (Bun == false)
-            {
-                SpecialInstructions.Add("Hold bun");
-            }
-            if (Ketchup == false)
-            {
-                SpecialInstructions.Add("Hold ketchup");
-            }
-            if (Mustard == false)
-            {
-                SpecialInstructions.Add("Hold mustard");
-            }
-            if (Pickles == false)
-            {
-                SpecialInstructions.Add("Hold pickle");
-            }
-            if (Cheese == false)
-            {
-                SpecialInstructions.Add("Hold cheese");
-            }
-        }
     }
 }
+
 

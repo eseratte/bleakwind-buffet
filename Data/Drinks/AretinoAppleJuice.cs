@@ -9,10 +9,64 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Drinks
+namespace BleakwindBuffet.Data.Drinks
 {
-    class AretinoAppleJuice
+    public class AretinoAppleJuice
     {
+        /// <summary>
+        /// gets/sets ice
+        /// </summary>
+        public bool Ice { get; set; } = true;
+
+        /// <summary>
+        /// gets/sets size 
+        /// </summary>
+        public Size Size { get; set; } = Size.Small;
+
+        /// <summary>
+        /// gets drink price
+        /// </summary>    
+        Size s = Size.Small;
+        public double Price
+        {
+            get
+            {
+                double price = 0;
+                if (s == Size.Small) price = 0.62;
+                if (s == Size.Medium) price = 0.87;
+                if (s == Size.Large) price = 1.01;
+                return price;
+            }
+        }
+
+        /// <summary>
+        /// gets calories of drink
+        /// </summary>
+        public uint Calories
+        {
+            get
+            {
+                uint calories = 0;
+                if (s == Size.Small) calories = 44;
+                if (s == Size.Medium) calories = 88;
+                if (s == Size.Large) calories = 132;
+                return calories;
+            }
+        }
+
+        /// <summary>
+        /// gets special instructions of drink
+        /// </summary>
+        public List<String> SpecialInstructions
+        {
+            get
+            {
+                List<string> instructions = new List<string>();
+                if (!Ice) instructions.Add("Add ice");
+                return instructions;
+            }
+        }
+
         /// <summary>
         /// overwrites ToString func
         /// </summary>
@@ -31,40 +85,6 @@ namespace Data.Drinks
             else
             {
                 return "Large Aretino Apple Juice";
-            }
-        }
-
-        /// <summary>
-        /// sets property of side
-        /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double price;
-            uint calories;
-            List<string> SpecialInstructions = new List<string>();
-            Size size = Size.Small;
-            bool Ice = false;
-
-            if (Ice == true)
-            {
-                SpecialInstructions.Add("Add ice");
-            }
-
-            if (size == Size.Small)
-            {
-                price = 0.62;
-                calories = 44;
-            }
-            else if (size == Size.Medium)
-            {
-                price = 0.87;
-                calories = 88;
-            }
-            else
-            {
-                price = 1.01;
-                calories = 132;
             }
         }
     }

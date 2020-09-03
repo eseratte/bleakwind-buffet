@@ -8,81 +8,108 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Entrees
+namespace BleakwindBuffet.Data.Entrees
 {
-    class ThalmorTriple
+    public class ThalmorTriple
     {
+            /// <summary>
+            /// gets/sets Bun bool
+            /// </summary>
+            public bool Bun { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Ketchup bool
+            /// </summary>
+            public bool Ketchup { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Mustard bool
+            /// </summary>
+            public bool Mustard { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Pickle bool
+            /// </summary>
+            public bool Pickle { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Cheese bool
+            /// </summary>
+            public bool Cheese { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Tomato bool
+            /// </summary>
+            public bool Tomato { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Lettuce bool
+            /// </summary>
+            public bool Lettuce { get; set; } = true;
+
+            /// <summary>
+            /// gets/sets Mayo bool
+            /// </summary>
+            public bool Mayo { get; set; } = true;
+
         /// <summary>
-        /// overwrites ToString func
+        /// gets/sets Bacon bool
         /// </summary>
-        /// <returns>entree name</returns>
-        public override string ToString()
-        {
-            return "ThalmorTriple";
-        }
+        public bool Bacon { get; set; } = true;
+
         /// <summary>
-        /// sets properties of entree
+        /// gets/sets Egg bool
         /// </summary>
-        /// <param name="args"></param>
-        public static void main(String[] args)
-        {
-            double Price = 8.32;
-            uint Calories = 943;
+        public bool Egg { get; set; } = true;
 
-            bool Bun = true;
-            bool Ketchup = true;
-            bool Mustard = true;
-            bool Pickles = true;
-            bool Cheese = true;
-            bool Tomato = true;
-            bool Lettuce = true;
-            bool Mayo = true;
-            bool Bacon = true;
-            bool Egg = true;
 
-            List<String> SpecialInstructions = new List<string>();
+        /// <summary>
+        /// gets price of burger
+        /// </summary>
+        /// <param name="args"></param>    
+        public double Price
+            {
+                get => 8.32;
+            }
 
-            if (Bun == false)
+            /// <summary>
+            /// gets calories of burger
+            /// </summary>
+            public uint Calories
             {
-                SpecialInstructions.Add("Hold bun");
+                get => 943;
             }
-            if (Ketchup == false)
+
+            /// <summary>
+            /// gets special instructions of burger
+            /// </summary>
+            public List<String> SpecialInstructions
             {
-                SpecialInstructions.Add("Hold ketchup");
+                get
+                {
+                    List<string> instructions = new List<string>();
+                    if (!Bun) instructions.Add("Hold bun");
+                    if (!Ketchup) instructions.Add("Hold ketchup");
+                    if (!Mustard) instructions.Add("Hold mustard");
+                    if (!Pickle) instructions.Add("Hold pickle");
+                    if (!Cheese) instructions.Add("Hold cheese");
+                    if (!Tomato) instructions.Add("Hold tomato");
+                    if (!Lettuce) instructions.Add("Hold lettuce");
+                    if (!Mayo) instructions.Add("Hold mayo");
+                if (!Bacon) instructions.Add("Hold bacon");
+                if (!Egg) instructions.Add("Hold egg");
+                    return instructions;
+                }
             }
-            if (Mustard == false)
+
+            /// <summary>
+            /// overwrites ToString func
+            /// </summary>
+            /// <returns>entree name</returns>
+            public override string ToString()
             {
-                SpecialInstructions.Add("Hold mustard");
-            }
-            if (Pickles == false)
-            {
-                SpecialInstructions.Add("Hold pickle");
-            }
-            if (Cheese == false)
-            {
-                SpecialInstructions.Add("Hold cheese");
-            }
-            if (Tomato == false)
-            {
-                SpecialInstructions.Add("Hold tomato");
-            }
-            if (Lettuce == false)
-            {
-                SpecialInstructions.Add("Hold lettuce");
-            }
-            if (Mayo == false)
-            {
-                SpecialInstructions.Add("Hold mayo");
-            }
-            if (Bacon == false)
-            {
-                SpecialInstructions.Add("Hold bacon");
-            }
-            if (Egg == false)
-            {
-                SpecialInstructions.Add("Hold egg");
+                return "Thalmor Triple";
             }
         }
-    }
 }
 
