@@ -13,7 +13,22 @@ using BleakwindBuffet.Data.Enums;
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
     public class SmokehouseSkeletonTests
-    {        
+    {
+        [Fact]
+        public void ShouldBeAssignableToAbstractEntreeClass()
+        {
+            SmokehouseSkeleton s = new SmokehouseSkeleton();
+            Assert.IsAssignableFrom<Entree>(s);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToIOrderItemInterface()
+        {
+            SmokehouseSkeleton s = new SmokehouseSkeleton();
+            Assert.IsAssignableFrom<IOrderItem>(s);
+        }
+
+
         [Fact]
         public void ShouldInlcudeSausageByDefault()
         {

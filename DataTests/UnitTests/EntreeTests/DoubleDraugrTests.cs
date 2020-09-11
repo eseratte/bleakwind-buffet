@@ -13,7 +13,21 @@ using BleakwindBuffet.Data.Enums;
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
     public class DoubleDraugrTests
-    {   
+    {
+        [Fact]
+        public void ShouldBeAssignableToAbstractEntreeClass()
+        {
+            DoubleDraugr d = new DoubleDraugr();
+            Assert.IsAssignableFrom<Entree>(d);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToIOrderItemInterface()
+        {
+            DoubleDraugr d = new DoubleDraugr();
+            Assert.IsAssignableFrom<IOrderItem>(d);
+        }
+
         [Fact]
         public void ShouldIncludeBunByDefault()
         {
@@ -161,7 +175,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         public void ShouldReturnCorrectCalories()
         {
             DoubleDraugr dd = new DoubleDraugr();
-            Assert.Equal((uint)743, dd.Calories);
+            Assert.Equal((uint)843, dd.Calories);
         }
 
         [Theory]
@@ -176,6 +190,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             dd.Mustard = includeMustard;
             dd.Pickle = includePickle;
             dd.Cheese = includeCheese;
+            dd.Tomato = includeTomato;
+            dd.Lettuce = includeLettuce;
+            dd.Mayo = includeMayo;
 
             if (!includeBun)
             {

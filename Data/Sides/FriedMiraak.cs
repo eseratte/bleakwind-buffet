@@ -11,25 +11,24 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class FriedMiraak
+    public class FriedMiraak : Side, IOrderItem
     {
         /// <summary>
         /// gets/sets size
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Enums.Size.Small;
 
         /// <summary>
         /// gets price
-        /// </summary>
-        Size s = Size.Small;
-        public double Price
+        /// </summary>        
+        public override double Price
         {
             get
             {
                 double price = 0;
-                if (s == Size.Small) price = 1.78;
-                if (s == Size.Medium) price = 2.01;
-                if (s == Size.Large) price = 2.88;
+                if (Size == Size.Small) price = 1.78;
+                if (Size == Size.Medium) price = 2.01;
+                if (Size == Size.Large) price = 2.88;
                 return price;
             }
         }
@@ -37,14 +36,14 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// gets calories
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (s == Size.Small) calories = 151;
-                if (s == Size.Medium) calories = 236;
-                if (s == Size.Large) calories = 306;
+                if (Size == Size.Small) calories = 151;
+                if (Size == Size.Medium) calories = 236;
+                if (Size == Size.Large) calories = 306;
                 return calories;
             }
         }
@@ -52,7 +51,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// gets special instructions
         /// </summary>
-        public List<String> SpecialInstructions
+        public override List<String> SpecialInstructions
         {
             get
             {
@@ -67,12 +66,11 @@ namespace BleakwindBuffet.Data.Sides
         /// <returns>side size</returns>
         public override string ToString()
         {
-            Size s = Size.Small;
-            if (s == Size.Small)
+            if (Size == Size.Small)
             {
                 return "Small Fried Miraak";
             }
-            else if (s == Size.Medium)
+            else if (Size == Size.Medium)
             {
                 return "Medium Fried Miraak";
             }

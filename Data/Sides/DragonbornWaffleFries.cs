@@ -1,5 +1,4 @@
-﻿/*
- * Name: Ethan Seratte
+﻿/* Name: Ethan Seratte
  * Class Name: DragonbornWaffleFries.cs
  * Purpose: class to represent Dragonborn Waffle Fries
  */
@@ -11,25 +10,24 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class DragonbornWaffleFries
+    public class DragonbornWaffleFries : Side, IOrderItem
     {
         /// <summary>
         /// gets/sets size
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Enums.Size.Small;
 
         /// <summary>
         /// gets price
-        /// </summary>
-        Size s = Size.Small;
-        public double Price
+        /// </summary>     
+        public override double Price
         {
             get
             {
                 double price = 0;
-                if (s == Size.Small) price = 0.42;
-                if (s == Size.Medium) price = 0.76;
-                if (s == Size.Large) price = 0.96;
+                if (Size == Size.Small) price = 0.42;
+                if (Size == Size.Medium) price = 0.76;
+                if (Size == Size.Large) price = 0.96;
                 return price;
             }
         }
@@ -37,14 +35,14 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// gets calories
         /// </summary>
-        public uint Calories
+        public override  uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (s == Size.Small) calories = 77;
-                if (s == Size.Medium) calories = 89;
-                if (s == Size.Large) calories = 100;
+                if (Size == Size.Small) calories = 77;
+                if (Size == Size.Medium) calories = 89;
+                if (Size == Size.Large) calories = 100;
                 return calories;
             }
         }
@@ -52,7 +50,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// gets special instructions
         /// </summary>
-        public List<String> SpecialInstructions
+        public override List<String> SpecialInstructions
         {
             get
             {
@@ -67,13 +65,12 @@ namespace BleakwindBuffet.Data.Sides
         /// </summary>
         /// <returns>side size</returns>
         public override string ToString()
-        {
-            Size s = Size.Small;
-            if (s == Size.Small)
+        {           
+            if (Size == Size.Small)
             {
-                return "Small Dragonborn Waffle Fries ";
+                return "Small Dragonborn Waffle Fries";
             }
-            else if (s == Size.Medium)
+            else if (Size == Size.Medium)
             {
                 return "Medium Dragonborn Waffle Fries";
             }

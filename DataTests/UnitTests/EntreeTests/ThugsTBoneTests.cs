@@ -15,6 +15,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
     public class ThugsTBoneTests
     {
         [Fact]
+        public void ShouldBeAssignableToAbstractEntreeClass()
+        {
+            ThugsTBone t = new ThugsTBone();
+            Assert.IsAssignableFrom<Entree>(t);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToIOrderItemInterface()
+        {
+            ThugsTBone t = new ThugsTBone();
+            Assert.IsAssignableFrom<IOrderItem>(t);
+        }
+
+        [Fact]
         public void ShouldReturnCorrectPrice()
         {
             ThugsTBone tb = new ThugsTBone();

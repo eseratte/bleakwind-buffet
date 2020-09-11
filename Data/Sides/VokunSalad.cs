@@ -11,25 +11,24 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class VokunSalad
+    public class VokunSalad : Side, IOrderItem
     {
         /// <summary>
         /// gets/sets size
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Enums.Size.Small;
 
         /// <summary>
         /// gets price
         /// </summary>
-        Size s = Size.Small;
-        public double Price
+        public override double Price
         {
             get
             {
                 double price = 0;
-                if (s == Size.Small) price = 0.93;
-                if (s == Size.Medium) price = 1.28;
-                if (s == Size.Large) price = 1.82;
+                if (Size == Size.Small) price = 0.93;
+                if (Size == Size.Medium) price = 1.28;
+                if (Size == Size.Large) price = 1.82;
                 return price;
             }
         }
@@ -37,14 +36,14 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// gets calories
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (s == Size.Small) calories = 41;
-                if (s == Size.Medium) calories = 52;
-                if (s == Size.Large) calories = 73;
+                if (Size == Size.Small) calories = 41;
+                if (Size == Size.Medium) calories = 52;
+                if (Size == Size.Large) calories = 73;
                 return calories;
             }
         }
@@ -52,7 +51,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// gets special instructions
         /// </summary>
-        public List<String> SpecialInstructions
+        public override List<String> SpecialInstructions
         {
             get
             {
@@ -67,12 +66,11 @@ namespace BleakwindBuffet.Data.Sides
         /// <returns>side size</returns>
         public override string ToString()
         {
-            Size s = Size.Small;
-            if (s == Size.Small)
+            if (Size == Size.Small)
             {
                 return "Small Vokun Salad";
             }
-            else if (s == Size.Medium)
+            else if (Size == Size.Medium)
             {
                 return "Medium Vokun Salad";
             }

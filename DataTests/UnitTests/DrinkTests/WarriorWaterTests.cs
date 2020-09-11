@@ -15,6 +15,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
     public class WarriorWaterTests
     {
         [Fact]
+        public void ShouldBeAssignableToAbstractDrinkClass()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.IsAssignableFrom<Drink>(w);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToIOrderItemInterface()
+        {
+            WarriorWater w = new WarriorWater();
+            Assert.IsAssignableFrom<IOrderItem>(w);
+        }
+
+        [Fact]
         public void ShouldIncludeIceByDefault()
         {
             WarriorWater ww = new WarriorWater();
@@ -82,9 +96,10 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             WarriorWater ww = new WarriorWater();
             ww.Ice = includeIce;
             ww.Lemon = includeLemon;
-            if (includeIce) Assert.Contains("Add ice", ww.SpecialInstructions);
+            if (includeIce == false) Assert.Contains("Hold ice", ww.SpecialInstructions);
             if (includeLemon) Assert.Contains("Add lemon", ww.SpecialInstructions);
-            if(!(includeIce && includeLemon)) Assert.Empty(ww.SpecialInstructions);
+            
+            if(includeIce == true && includeLemon == false) Assert.Empty(ww.SpecialInstructions);
         }
 
         [Theory]

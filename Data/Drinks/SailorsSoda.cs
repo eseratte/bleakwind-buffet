@@ -11,7 +11,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class SailorSoda
+    public class SailorSoda : Drink, IOrderItem
     {
         /// <summary>
         /// gets/sets ice
@@ -21,7 +21,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets/sets size
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Enums.Size.Small;
 
         /// <summary>
         /// gets/sets flavor
@@ -31,27 +31,26 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets price
         /// </summary>
-        Size s = Size.Small;
-        public double Price
+        public override double Price
         {
             get
             {
                 double price = 0;
-                if (s == Size.Small) price = 1.42;
-                if (s == Size.Medium) price = 1.74;
-                if (s == Size.Large) price = 2.07;
+                if (Size == Size.Small) price = 1.42;
+                if (Size == Size.Medium) price = 1.74;
+                if (Size == Size.Large) price = 2.07;
                 return price;
             }
         }
 
-        public uint Calories
+        public override uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (s == Size.Small) calories = 117;
-                if (s == Size.Medium) calories = 153;
-                if (s == Size.Large) calories = 205;
+                if (Size == Size.Small) calories = 117;
+                if (Size == Size.Medium) calories = 153;
+                if (Size == Size.Large) calories = 205;
                 return calories;
             }
         }
@@ -59,7 +58,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets special instructions
         /// </summary>
-        public List<String> SpecialInstructions
+        public override List<String> SpecialInstructions
         {
             get
             {
@@ -75,61 +74,61 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>soda size/flavor</returns>
         public override string ToString()
         {
-            Size s = Size.Small;
-            SodaFlavor Flavor = SodaFlavor.Cherry;
-            if (s == Size.Small)
+            
+            //SodaFlavor Flavor = SodaFlavor.Cherry;
+            if (Size == Size.Small)
             {
                 if (Flavor == SodaFlavor.Cherry)
                 {
-                    return "Small Cherry Sailor's Soda";
+                    return "Small Cherry Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Blackberry)
                 {
-                    return "Small Blackberry Sailor's Soda";
+                    return "Small Blackberry Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Grapefruit)
                 {
-                    return "Small Grapefruit Sailor's Soda";
+                    return "Small Grapefruit Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Lemon)
                 {
-                    return "Small Lemon Sailor's Soda";
+                    return "Small Lemon Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Peach)
                 {
-                    return "Small Peach Sailor's Soda";
+                    return "Small Peach Sailor Soda";
                 }
                 else
                 {
-                    return "Small Watermelon Sailor's Soda";
+                    return "Small Watermelon Sailor Soda";
                 }
             }
 
-            else if (s == Size.Medium)
+            else if (Size == Size.Medium)
             {
                 if (Flavor == SodaFlavor.Cherry)
                 {
-                    return "Medium Cherry Sailor's Soda";
+                    return "Medium Cherry Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Blackberry)
                 {
-                    return "Medium Blackberry Sailor's Soda";
+                    return "Medium Blackberry Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Grapefruit)
                 {
-                    return "Medium Grapefruit Sailor's Soda";
+                    return "Medium Grapefruit Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Lemon)
                 {
-                    return "Medium Lemon Sailor's Soda";
+                    return "Medium Lemon Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Peach)
                 {
-                    return "Medium Peach Sailor's Soda";
+                    return "Medium Peach Sailor Soda";
                 }
                 else
                 {
-                    return "Medium Watermelon Sailor's Soda";
+                    return "Medium Watermelon Sailor Soda";
                 }
             }
 
@@ -137,27 +136,27 @@ namespace BleakwindBuffet.Data.Drinks
             {
                 if (Flavor == SodaFlavor.Cherry)
                 {
-                    return "Large Cherry Sailor's Soda";
+                    return "Large Cherry Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Blackberry)
                 {
-                    return "Large Blackberry Sailor's Soda";
+                    return "Large Blackberry Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Grapefruit)
                 {
-                    return "Large Grapefruit Sailor's Soda";
+                    return "Large Grapefruit Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Lemon)
                 {
-                    return "Large Lemon Sailor's Soda";
+                    return "Large Lemon Sailor Soda";
                 }
                 else if (Flavor == SodaFlavor.Peach)
                 {
-                    return "Large Peach Sailor's Soda";
+                    return "Large Peach Sailor Soda";
                 }
                 else
                 {
-                    return "Large Watermelon Sailor's Soda";
+                    return "Large Watermelon Sailor Soda";
                 }
             }
         }

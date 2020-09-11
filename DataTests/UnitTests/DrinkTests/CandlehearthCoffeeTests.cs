@@ -17,11 +17,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [Fact]
         public void ShouldBeAssignableToAbstractDrinkClass()
         {
+            CandlehearthCoffee c = new CandlehearthCoffee();
+            Assert.IsAssignableFrom<Drink>(c);
         }
 
         [Fact]
         public void ShouldBeAssignableToIOrderItemInterface()
         {
+            CandlehearthCoffee c = new CandlehearthCoffee();
+            Assert.IsAssignableFrom<IOrderItem>(c);
         }
 
         [Fact]
@@ -125,17 +129,18 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             CandlehearthCoffee cc = new CandlehearthCoffee();
             cc.Ice = includeIce;
+            cc.RoomForCream = includeCream;
             if (includeIce) Assert.Contains("Add ice", cc.SpecialInstructions);
-            else Assert.Empty(cc.SpecialInstructions);
-
             if (includeCream) Assert.Contains("Add cream", cc.SpecialInstructions);
-            else Assert.Empty(cc.SpecialInstructions);
+            //else Assert.Empty(cc.SpecialInstructions);
+
+            if (includeCream == false && includeIce == false) Assert.Empty(cc.SpecialInstructions);
         }
 
         [Theory]
-        [InlineData(true, Size.Small, "Small Candlehearth Decaf Coffee")]
-        [InlineData(true, Size.Medium, "Medium Candlehearth Decaf Coffee")]
-        [InlineData(true, Size.Large, "Large Candlehearth Decaf Coffee")]
+        [InlineData(true, Size.Small, "Small Decaf Candlehearth Coffee")]
+        [InlineData(true, Size.Medium, "Medium Decaf Candlehearth Coffee")]
+        [InlineData(true, Size.Large, "Large Decaf Candlehearth Coffee")]
         [InlineData(false, Size.Small, "Small Candlehearth Coffee")]
         [InlineData(false, Size.Medium, "Medium Candlehearth Coffee")]
         [InlineData(false, Size.Large, "Large Candlehearth Coffee")]
@@ -143,6 +148,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             CandlehearthCoffee cc = new CandlehearthCoffee();
             cc.Size = size;
+            cc.Decaf = decaf;
             Assert.Equal(name, cc.ToString());
         }
     }

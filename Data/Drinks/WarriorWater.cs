@@ -11,7 +11,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class WarriorWater
+    public class WarriorWater : Drink, IOrderItem
     {
         /// <summary>
         /// gets/sets ice
@@ -21,7 +21,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets/sets size
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// gets/sets lemon
@@ -31,7 +31,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets drink price
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -43,11 +43,11 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets drink calories
         /// </summary>
-        public double Calories
+        public override uint Calories
         {
             get
             {
-                double calories = 0;
+                uint calories = 0;
                 return calories;
             }
         }
@@ -55,13 +55,13 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets special instructions of drink
         /// </summary>
-        public List<String> SpecialInstructions
+        public override List<String> SpecialInstructions
         {
             get
             {
                 List<string> instructions = new List<string>();
-                if (!Ice) instructions.Add("Hold ice");
-                if (!Lemon) instructions.Add("Add lemon");
+                if (Ice == false) instructions.Add("Hold ice");
+                if (Lemon) instructions.Add("Add lemon");
                 return instructions;
             }
         }
@@ -72,12 +72,11 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>water size</returns>
         public override string ToString()
         {
-            Size s = Size.Small;
-            if (s == Size.Small)
+            if (Size == Size.Small)
             {
                 return "Small Warrior Water";
             }
-            else if (s == Size.Medium)
+            else if (Size == Size.Medium)
             {
                 return "Medium Warrior Water";
             }

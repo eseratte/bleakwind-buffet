@@ -11,7 +11,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class MarkarthMilk
+    public class MarkarthMilk : Drink, IOrderItem 
     {
 
         /// <summary>
@@ -22,20 +22,19 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets/sets size 
         /// </summary>
-        public Size Size { get; set; } = Size.Small;
+        public override Size Size { get; set; } = Enums.Size.Small;
 
         /// <summary>
         /// gets drink price
-        /// </summary>       
-        Size s = Size.Small;
-        public double Price
+        /// </summary>               
+        public override double Price
         {
             get
             {
                 double price = 0;
-                if (s == Size.Small) price = 1.05;
-                if (s == Size.Medium) price = 1.11;
-                if (s == Size.Large) price = 1.22;
+                if (Size == Size.Small) price = 1.05;
+                if (Size == Size.Medium) price = 1.11;
+                if (Size == Size.Large) price = 1.22;
                 return price;
             }
         }
@@ -43,14 +42,14 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets calories of drink
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (s == Size.Small) calories = 56;
-                if (s == Size.Medium) calories = 72;
-                if (s == Size.Large) calories = 93;
+                if (Size == Size.Small) calories = 56;
+                if (Size == Size.Medium) calories = 72;
+                if (Size == Size.Large) calories = 93;
                 return calories;
             }
         }
@@ -58,12 +57,12 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// gets special instructions of drink
         /// </summary>
-        public List<String> SpecialInstructions
+        public override List<String> SpecialInstructions
         {
             get
             {
                 List<string> instructions = new List<string>();
-                if (!Ice) instructions.Add("Add ice");
+                if (Ice) instructions.Add("Add ice");
                 return instructions;
             }
         }
@@ -73,14 +72,13 @@ namespace BleakwindBuffet.Data.Drinks
         /// </summary>
         /// <returns>milk size</returns>
         public override string ToString()
-        {
-            Size s = Size.Small;            
-            if (s == Size.Small)
+        {                     
+            if (Size == Size.Small)
             {
                 return "Small Markarth Milk";
             }
 
-            else if (s == Size.Medium)
+            else if (Size == Size.Medium)
             {
                 return "Medium Markarth Milk";
             }

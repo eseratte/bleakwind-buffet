@@ -17,6 +17,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
     public class SailorSodaTests
     {
         [Fact]
+        public void ShouldBeAssignableToAbstractDrinkClass()
+        {
+            SailorSoda s = new SailorSoda();
+            Assert.IsAssignableFrom<Drink>(s);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToIOrderItemInterface()
+        {
+            SailorSoda s = new SailorSoda();
+            Assert.IsAssignableFrom<IOrderItem>(s);
+        }
+
+        [Fact]
         public void ShouldIncludeIceByDefault()
         {
             SailorSoda ss = new SailorSoda();
@@ -107,7 +121,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             SailorSoda ss = new SailorSoda();
             ss.Ice = includeIce;
-            if (includeIce) Assert.Contains("Add ice", ss.SpecialInstructions);
+            if (includeIce == false) Assert.Contains("Hold ice", ss.SpecialInstructions);
             else Assert.Empty(ss.SpecialInstructions);
         }
         
@@ -128,9 +142,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(SodaFlavor.Lemon, Size.Medium, "Medium Lemon Sailor Soda")]
         [InlineData(SodaFlavor.Lemon, Size.Large, "Large Lemon Sailor Soda")]
 
-        [InlineData(SodaFlavor.Peach, Size.Small, "Small Blackberry Soda")]
-        [InlineData(SodaFlavor.Peach, Size.Medium, "Medium Blackberry Soda")]
-        [InlineData(SodaFlavor.Peach, Size.Large, "Small Large Soda")]
+        [InlineData(SodaFlavor.Peach, Size.Small, "Small Peach Sailor Soda")]
+        [InlineData(SodaFlavor.Peach, Size.Medium, "Medium Peach Sailor Soda")]
+        [InlineData(SodaFlavor.Peach, Size.Large, "Large Peach Sailor Soda")]
 
         [InlineData(SodaFlavor.Watermelon, Size.Small, "Small Watermelon Sailor Soda")]
         [InlineData(SodaFlavor.Watermelon, Size.Medium, "Medium Watermelon Sailor Soda")]
@@ -139,6 +153,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         {
             SailorSoda ss = new SailorSoda();
             ss.Size = size;
+            ss.Flavor = flavor;
             Assert.Equal(name, ss.ToString());
         }
     }
