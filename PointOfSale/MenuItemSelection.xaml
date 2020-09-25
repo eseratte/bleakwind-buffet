@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="PointOfSale.MenuItemSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="455">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <!--Entrees-->
+        <Button Click="CustomizeItem">Briarhear Burger</Button>
+        <Button Click="DoubleDraugrCustomization" Grid.Column="1">Draugr Double</Button>
+        <Button Click="CustomizeThalmorTriple" Grid.Column="2">Thalmor Triple</Button>
+        <Button Click="CustomizeSmokehouseSkeleton" Grid.Column="3">Smokehouse Skeleton</Button>
+        <Button Click="CustomizeThugsTBone" Grid.Row="1">Thugs T-Bone</Button>
+        <Button Click="CustomizePhillyPoacher" Grid.Row="1" Grid.Column="1">Philly Poacher</Button>
+        <Button Click="CustomizeGardenOrcOmelette" Grid.Row="1" Grid.Column="2">Garden Orc Omelette</Button>
+        <!--Sides-->
+        <Button Click="CustomizeSize" Grid.Row="1" Grid.Column="3">Mad Otar Grits</Button>
+        <Button Click="CustomizeSize" Grid.Row="2" Grid.Column="0">Fried Miraak</Button>
+        <Button Click="CustomizeSize" Grid.Row="2" Grid.Column="1">Dragonborn Waffle Fries</Button>
+        <Button Click="CustomizeSize" Grid.Row="2" Grid.Column="2">Vokun Salad</Button>
+        <!--Drinks-->
+        <Button Click="CustomizeSailorSoda" Grid.Row="2" Grid.Column="3">Sailor Soda</Button>
+        <Button Click="CustomizeIce" Grid.Row="3" Grid.Column="0">Aretino Apple Juice</Button>
+        <Button Click="CustomizeIce" Grid.Row="3" Grid.Column="1">Markarth Milk</Button>
+        <Button Click="CustomizeCandlehearthCoffee" Grid.Row="3" Grid.Column="2">Candlehearth Coffee</Button>
+        <Button Click="CustomizeIce" Grid.Row="3" Grid.Column="3">Warrior Water</Button>
+        <!--Navigation-->
+        <Button Grid.Row="4" Grid.ColumnSpan="4">Cancel Order</Button>
+
+        <Border x:Name="selectionBorder" Grid.ColumnSpan="4" Grid.RowSpan="5"></Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="PointOfSale.CustomizeSailorSoda"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--Control border-->
+    <Border x:Name="customizationBorder" Height="450">
+        <DockPanel Background="White">
+            <!--Item customization options -->
+            <Label DockPanel.Dock="Top">Size</Label>
+            <ComboBox DockPanel.Dock="Top" Text="Size">
+                <ComboBoxItem>Small</ComboBoxItem>
+                <ComboBoxItem>Medium</ComboBoxItem>
+                <ComboBoxItem>Large</ComboBoxItem>
+            </ComboBox>
+            <Label DockPanel.Dock="Top">Flavor</Label>
+            <ComboBox DockPanel.Dock="Top" Text="Flavor">
+                <ComboBoxItem>Blackberry</ComboBoxItem>
+                <ComboBoxItem>Cherry</ComboBoxItem>
+                <ComboBoxItem>Grapefruit</ComboBoxItem>
+                <ComboBoxItem>Lemon</ComboBoxItem>
+                <ComboBoxItem>Peach</ComboBoxItem>
+                <ComboBoxItem>Watermelon</ComboBoxItem>
+            </ComboBox>
+            <!--Navigation-->
+            <Button Click="CancelOrder" DockPanel.Dock="Bottom" Height="100">Cancel Order</Button>
+            <Button Click="GoBackToItemSelect" DockPanel.Dock="Bottom" Height="100" VerticalAlignment="Bottom">Go Back</Button>
+
+        </DockPanel>
+    </Border>
+</UserControl>

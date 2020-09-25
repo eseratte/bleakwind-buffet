@@ -53,8 +53,8 @@ namespace BleakwindBuffet.Data
             MadOtarGrits m = new MadOtarGrits();
             VokunSalad v = new VokunSalad();
 
-            //foreach (Size s in Enum.GetValues(typeof(Size))) 
-           // {
+           //foreach (Size s in Enum.GetValues(typeof(Size))) 
+           //{
                // d.Size = s;
                 sideList.Add(d);
                // f.Size = s;
@@ -63,7 +63,7 @@ namespace BleakwindBuffet.Data
                 sideList.Add(m);
                // v.Size = s;
                 sideList.Add(v);    
-           // }
+           //}
             return sideList;
         }
 
@@ -81,7 +81,7 @@ namespace BleakwindBuffet.Data
             WarriorWater w = new WarriorWater();
 
             //foreach (Size s in Enum.GetValues(typeof(Size)))
-            //{
+          //{
                 //a.Size = s;
                 drinkList.Add(a);
                 //c.Size = s;
@@ -92,12 +92,12 @@ namespace BleakwindBuffet.Data
                 //w.Size = s;
                 drinkList.Add(w);
 
-               // foreach (SodaFlavor sf in Enum.GetValues(typeof(SodaFlavor)))
-               // {
-                   // ss.Flavor = sf;
+              // foreach (SodaFlavor sf in Enum.GetValues(typeof(SodaFlavor)))
+              // {
+                 //  ss.Flavor = sf;
                     drinkList.Add(ss);
-               // }
-            //}
+             // }
+          // }
             return drinkList;
         }
 
