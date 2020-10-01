@@ -86,5 +86,23 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             vs.Size = size;
             Assert.Equal(name, vs.ToString());
         }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var s = new VokunSalad();
+            Assert.PropertyChanged(s, "Size", () =>
+            {
+                s.Size = Size.Small;
+            });
+            Assert.PropertyChanged(s, "Size", () =>
+            {
+                s.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(s, "Size", () =>
+            {
+                s.Size = Size.Large;
+            });
+        }
     }
 }

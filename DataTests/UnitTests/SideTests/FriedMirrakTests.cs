@@ -86,5 +86,23 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             fm.Size = size;
             Assert.Equal(name, fm.ToString());
         }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var m = new FriedMiraak();
+            Assert.PropertyChanged(m, "Size", () =>
+            {
+                m.Size = Size.Small;
+            });
+            Assert.PropertyChanged(m, "Size", () =>
+            {
+                m.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(m, "Size", () =>
+            {
+                m.Size = Size.Large;
+            });
+        }
     }
 }

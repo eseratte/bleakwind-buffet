@@ -6,43 +6,83 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class DragonbornWaffleFries : Side, IOrderItem
+    public class DragonbornWaffleFries : Side, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets size
+        /// invokes PropertyChanged event handler when Size changes
         /// </summary>
-        public override Size Size { get; set; } = Enums.Size.Small;
+        private Size s = Enums.Size.Small;
+        public override Size Size
+        {
+            get { return s; }
+
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
+        }
 
         /// <summary>
         /// gets price
-        /// </summary>     
+        /// invokes PropertyChanged event handler when Price changes
+        /// </summary>
         public override double Price
         {
             get
             {
                 double price = 0;
-                if (Size == Size.Small) price = 0.42;
-                if (Size == Size.Medium) price = 0.76;
-                if (Size == Size.Large) price = 0.96;
+                if (Size == Size.Small)
+                {
+                    price = 0.42;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Medium)
+                {
+                    price = 0.76;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Large)
+                {
+                    price = 0.96;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
                 return price;
             }
         }
 
         /// <summary>
         /// gets calories
+        /// invokes PropertyChanged event handler when Calories changes
         /// </summary>
         public override  uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (Size == Size.Small) calories = 77;
-                if (Size == Size.Medium) calories = 89;
-                if (Size == Size.Large) calories = 100;
+                if (Size == Size.Small)
+                {
+                    calories = 77;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Medium)
+                {
+                    calories = 89;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Large)
+                {
+                    calories = 100;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
                 return calories;
             }
         }

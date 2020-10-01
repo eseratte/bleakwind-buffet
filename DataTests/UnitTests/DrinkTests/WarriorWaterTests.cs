@@ -113,10 +113,50 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(name, ww.ToString());
         }
 
+        [Fact]
+        public void ChangingIceNotifiesIceProperty()
+        {
+            var w = new WarriorWater();
+            Assert.PropertyChanged(w, "Ice", () =>
+            {
+                w.Ice = true;
+            });
+            Assert.PropertyChanged(w, "Ice", () =>
+            {
+                w.Ice = false;
+            });
+        }
 
+        [Fact]
+        public void ChangingLemonNotifiesLemonProperty()
+        {
+            var w = new WarriorWater();
+            Assert.PropertyChanged(w, "Lemon", () =>
+            {
+                w.Lemon = true;
+            });
+            Assert.PropertyChanged(w, "Lemon", () =>
+            {
+                w.Lemon = false;
+            });
+        }
 
-
-
-
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var w = new WarriorWater();
+            Assert.PropertyChanged(w, "Size", () =>
+            {
+                w.Size = Size.Small;
+            });
+            Assert.PropertyChanged(w, "Size", () =>
+            {
+                w.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(w, "Size", () =>
+            {
+                w.Size = Size.Large;
+            });
+        }
     }
 }

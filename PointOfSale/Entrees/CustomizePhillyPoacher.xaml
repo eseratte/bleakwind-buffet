@@ -1,4 +1,10 @@
-﻿<UserControl x:Class="PointOfSale.DraugrDoubleCustomization"
+﻿<!--
+    Author: Ethan Seratte
+    Class: MainWindow.xaml
+    Purpose: Container to hold item customization options  
+    -->
+
+<UserControl x:Class="PointOfSale.CustomizePhillyPoacher"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,13 +16,9 @@
     <Border x:Name="customizationBorder" Height="450">
         <DockPanel Background="White">
             <!--Item customization options -->
-            <CheckBox DockPanel.Dock="Top">Bun</CheckBox>
-            <CheckBox DockPanel.Dock="Top">Ketchup</CheckBox>
-            <CheckBox DockPanel.Dock="Top">Mustard</CheckBox>
-            <CheckBox DockPanel.Dock="Top">Pickle</CheckBox>
-            <CheckBox DockPanel.Dock="Top">Cheese</CheckBox>
-            <CheckBox DockPanel.Dock="Top">Tomato</CheckBox>
-            <CheckBox DockPanel.Dock="Top">Lettuce</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Sirloin}" Name="sirloinCheckBox" DockPanel.Dock="Top">Sirloin</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Onion}" Name="onionCheckBox" DockPanel.Dock="Top">Onion</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Roll}" Name="rollCheckBox" DockPanel.Dock="Top">Roll</CheckBox>
             <!--Navigation-->
             <Button Click="CancelOrder" DockPanel.Dock="Bottom" Height="100">Cancel Order</Button>
             <Button Click="GoBackToItemSelect" DockPanel.Dock="Bottom" Height="100" VerticalAlignment="Bottom">Go Back</Button>

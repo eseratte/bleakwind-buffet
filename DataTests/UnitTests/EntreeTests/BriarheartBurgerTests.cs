@@ -179,5 +179,75 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             BriarheartBurger bb = new BriarheartBurger();
             Assert.True("Briarheart Burger" == bb.ToString());
         }
+
+        [Fact]
+        public void ChangingBunNotifiesBunProperty()
+        {
+            var b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Bun", () =>
+            {
+                b.Bun = true;
+            });
+            Assert.PropertyChanged(b, "Bun", () =>
+            {
+                b.Bun = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingKetchupNotifiesKetchupProperty()
+        {
+            var b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Ketchup", () =>
+            {
+                b.Ketchup = true;
+            });
+            Assert.PropertyChanged(b, "Ketchup", () =>
+            {
+                b.Ketchup = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingMustardNotifiesMustardProperty()
+        {
+            var b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Mustard", () =>
+            {
+                b.Mustard = true;
+            });
+            Assert.PropertyChanged(b, "Mustard", () =>
+            {
+                b.Mustard = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingPickleNotifiesPickleProperty()
+        {
+            var b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Pickle", () =>
+            {
+                b.Pickle = true;
+            });
+            Assert.PropertyChanged(b, "Pickle", () =>
+            {
+                b.Pickle = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingCheeseNotifiesCheeseProperty()
+        {
+            var b = new BriarheartBurger();
+            Assert.PropertyChanged(b, "Cheese", () =>
+            {
+                b.Cheese = true;
+            });
+            Assert.PropertyChanged(b, "Cheese", () =>
+            {
+                b.Cheese = false;
+            });
+        }
     }
 }

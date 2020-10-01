@@ -6,51 +6,133 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class DoubleDraugr : Entree, IOrderItem
+    public class DoubleDraugr : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets Bun bool
-        /// </summary>
-        public bool Bun { get; set; } = true;
+        /// invokes PropertyChanged event handler when Bun changes
+        /// </summary>       
+        private bool b = true;
+        public bool Bun
+        {
+            get { return b; }
+            set
+            {
+                b = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bun"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Ketchup bool
+        /// invokes PropertyChanged event handler when Ketchup changes
         /// </summary>
-        public bool Ketchup { get; set; } = true;
+        private bool k = true;
+        public bool Ketchup
+        {
+            get { return k; }
+            set
+            {
+                k = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ketchup"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Mustard bool
+        /// invokes PropertyChanged event handler when Mustard changes
         /// </summary>
-        public bool Mustard { get; set; } = true;
+        private bool m = true;
+        public bool Mustard
+        {
+            get { return m; }
+            set
+            {
+                m = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mustard"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Pickle bool
+        /// invokes PropertyChanged event handler when Pickle changes
         /// </summary>
-        public bool Pickle { get; set; } = true;
+        private bool p = true;
+        public bool Pickle
+        {
+            get { return p; }
+            set
+            {
+                p = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pickle"));
+            }
+        }
+
 
         /// <summary>
         /// gets/sets Cheese bool
+        /// invokes PropertyChanged event handler when Cheese changes
         /// </summary>
-        public bool Cheese { get; set; } = true;
-
+        private bool c = true;
+        public bool Cheese
+        {
+            get { return c; }
+            set
+            {
+                c = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
+            }
+        }
         /// <summary>
         /// gets/sets Tomato bool
+        /// invokes PropertyChanged event handler when Tomato changes
         /// </summary>
-        public bool Tomato { get; set; } = true;
+        private bool t = true;
+        public bool Tomato
+        {
+            get { return t; }
+            set
+            {
+                t = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Lettuce bool
+        /// invokes PropertyChanged event handler when Lettuce changes
         /// </summary>
-        public bool Lettuce { get; set; } = true;
+        private bool l = true;
+        public bool Lettuce
+        {
+            get { return l; }
+            set
+            {
+                l = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lettuce"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Mayo bool
         /// </summary>
-        public bool Mayo { get; set; } = true;
+        private bool ma = true;
+        public bool Mayo
+        {
+            get { return ma; }
+            set
+            {
+                ma = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mayo"));
+            }
+        }
 
         /// <summary>
         /// gets price of burger

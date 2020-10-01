@@ -1,4 +1,10 @@
-﻿<UserControl x:Class="PointOfSale.CustomizeIce"
+﻿<!--
+    Author: Ethan Seratte
+    Class: MainWindow.xaml
+    Purpose: Container to hold item customization options  
+    -->
+
+<UserControl x:Class="PointOfSale.CustomizeGardenOrcOmelette"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,16 +12,14 @@
              xmlns:local="clr-namespace:PointOfSale"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <!--Control border-->
     <Border x:Name="customizationBorder" Height="450">
         <DockPanel Background="White">
             <!--Item customization options -->
-            <Label DockPanel.Dock="Top">Size</Label>
-            <ComboBox DockPanel.Dock="Top" Text="Size">
-                <ComboBoxItem>Small</ComboBoxItem>
-                <ComboBoxItem>Medium</ComboBoxItem>
-                <ComboBoxItem>Large</ComboBoxItem>
-            </ComboBox>
-            <CheckBox DockPanel.Dock="Top">Ice</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Broccoli}" Name="broccoliCheckBox" DockPanel.Dock="Top">Broccoli</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Mushrooms}" Name="mushroomCheckBox" DockPanel.Dock="Top">Mushrooms</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Tomato}" Name="tomatoCheckBox" DockPanel.Dock="Top">Tomato</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Cheddar}" Name="cheddarCheckBox" DockPanel.Dock="Top">Cheddar</CheckBox>
 
             <!--Navigation-->
             <Button Click="CancelOrder" DockPanel.Dock="Bottom" Height="100">Cancel Order</Button>

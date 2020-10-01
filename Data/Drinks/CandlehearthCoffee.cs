@@ -7,59 +7,129 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class CandlehearthCoffee : Drink, IOrderItem
+    public class CandlehearthCoffee : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets ice
+        /// invokes PropertyChanged event handler when Ice changes
         /// </summary>
-        public bool Ice { get; set; } = false;
+        private bool i = false;
+        public bool Ice
+        {
+            get { return i; }
+            set
+            {
+                i = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
         /// gets/sets decaf
+        /// invokes PropertyChanged event handler when Decaf changes
         /// </summary>
-        public bool Decaf { get; set; } = false;
+        private bool d = false;
+        public bool Decaf
+        {
+            get { return d; }
+            set
+            {
+                d = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Decaf"));
+            }
+        }
 
         /// <summary>
-        /// gets/sets ice
+        /// gets/sets cream
+        /// invokes PropertyChanged event handler when RoomForCream changes
         /// </summary>
-        public bool RoomForCream { get; set; } = false;
+        private bool c = false;
+        public bool RoomForCream
+        {
+            get { return c; }
+            set
+            {
+                c = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
+            }
+        }
 
         /// <summary>
         /// gets/sets size
+        /// invokes PropertyChanged event handler when Size changes
         /// </summary>
-        public override Size Size { get; set; } = Enums.Size.Small;
+        private Size s = Enums.Size.Small;
+        public override Size Size
+        {
+            get { return s; }
+
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
+        }
 
         /// <summary>
         /// gets drink price
+        /// invokes PropertyChanged event handler when Price changes
         /// </summary>  
-        
+
         public override double Price
         {
             get
             {
                 double price = 0;
-                if (Size == Size.Small) price = 0.75;
-                if (Size == Size.Medium) price = 1.25;
-                if (Size == Size.Large) price = 1.75;
+                if (Size == Size.Small)
+                {
+                    price = 0.75;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Medium)
+                {
+                    price = 1.25;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Large)
+                {
+                    price = 1.75;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
                 return price;
             }
         }
 
         /// <summary>
         /// gets calories of drink
+        /// invokes PropertyChanged event handler when Calories changes
         /// </summary>
         public override uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (Size == Size.Small) calories = 7;
-                if (Size == Size.Medium) calories = 10;
-                if (Size == Size.Large) calories = 20;
+                if (Size == Size.Small)
+                {
+                    calories = 7;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Medium)
+                {
+                    calories = 10;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Large)
+                {
+                    calories = 20;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
                 return calories;
             }
         }

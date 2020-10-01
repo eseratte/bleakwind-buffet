@@ -7,50 +7,115 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class SailorSoda : Drink, IOrderItem
+    public class SailorSoda : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets ice
+        /// invokes PropertyChanged event handler when Ice changes
         /// </summary>
-        public bool Ice { get; set; } = true;
+        private bool i = true;
+        public bool Ice
+        {
+            get { return i; }
+            set
+            {
+                i = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
         /// gets/sets size
+        /// invokes PropertyChanged event handler when Size changes
         /// </summary>
-        public override Size Size { get; set; } = Enums.Size.Small;
+        private Size s = Enums.Size.Small;
+        public override Size Size
+        {
+            get { return s; }
+
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
+        }
+
 
         /// <summary>
         /// gets/sets flavor
+        /// invokes PropertyChanged event handler when Flavor changes
         /// </summary>
-        public SodaFlavor Flavor { get; set; } = SodaFlavor.Cherry;
+
+        private SodaFlavor f = Enums.SodaFlavor.Cherry;
+        public SodaFlavor Flavor
+        {
+            get { return f; }
+            set
+            {
+                f = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Flavor"));
+            }
+        }
 
         /// <summary>
         /// gets price
+        /// invokes PropertyChanged event handler when Price changes
         /// </summary>
         public override double Price
         {
             get
             {
                 double price = 0;
-                if (Size == Size.Small) price = 1.42;
-                if (Size == Size.Medium) price = 1.74;
-                if (Size == Size.Large) price = 2.07;
+                if (Size == Size.Small)
+                {
+                    price = 1.42;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Medium)
+                {
+                    price = 1.74;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Large)
+                {
+                    price = 2.07;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
                 return price;
             }
         }
 
+        /// <summary>
+        /// gets calories
+        /// invokes PropertyChanged event handler when Calories changes
+        /// </summary>
         public override uint Calories
         {
             get
             {
                 uint calories = 0;
-                if (Size == Size.Small) calories = 117;
-                if (Size == Size.Medium) calories = 153;
-                if (Size == Size.Large) calories = 205;
+                if (Size == Size.Small)
+                {
+                    calories = 117;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Medium)
+                {
+                    calories = 153;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Large)
+                {
+                    calories = 205;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
                 return calories;
             }
         }

@@ -1,4 +1,10 @@
-﻿<UserControl x:Class="PointOfSale.CustomizeThugsTBone"
+﻿<!--
+    Author: Ethan Seratte
+    Class: MainWindow.xaml
+    Purpose: Container to hold item customization options  
+    -->
+
+<UserControl x:Class="PointOfSale.MenuItemCustomization"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,11 +16,15 @@
     <Border x:Name="customizationBorder" Height="450">
         <DockPanel Background="White">
             <!--Item customization options -->
-            <TextBlock DockPanel.Dock="Top">No customization options for this item</TextBlock>
+            <CheckBox IsChecked="{Binding Path=Bun}" Name="bunCheckBox" DockPanel.Dock="Top">Bun</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Ketchup}" Name="ketchupCheckBox" DockPanel.Dock="Top" >Ketchup</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Mustard}" Name="mustardCheckBox" DockPanel.Dock="Top">Mustard</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Pickle}" Name="pickleCheckBox" DockPanel.Dock="Top">Pickle</CheckBox>
+            <CheckBox IsChecked="{Binding Path=Cheese}" Name="cheeseCheckBox" DockPanel.Dock="Top">Cheese</CheckBox>
             <!--Navigation-->
             <Button Click="CancelOrder" DockPanel.Dock="Bottom" Height="100">Cancel Order</Button>
             <Button Click="GoBackToItemSelect" DockPanel.Dock="Bottom" Height="100" VerticalAlignment="Bottom">Go Back</Button>
-
+      
         </DockPanel>
     </Border>
 </UserControl>

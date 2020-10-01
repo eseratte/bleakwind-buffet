@@ -7,30 +7,68 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class SmokehouseSkeleton : Entree, IOrderItem
+    public class SmokehouseSkeleton : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets SausageLink bool
         /// </summary>
-        public bool SausageLink { get; set; } = true;
+        private bool s = true;
+        public bool SausageLink
+        {
+            get { return s; }
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SausageLink"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Egg bool
         /// </summary>
-        public bool Egg { get; set; } = true;
+        private bool e = true;
+        public bool Egg
+        {
+            get { return e; }
+            set
+            {
+                e = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
+            }
+        }
 
         /// <summary>
         /// gets/sets HashBrowns bool
         /// </summary>
-        public bool HashBrowns { get; set; } = true;
-
+        private bool h = true;
+        public bool HashBrowns
+        {
+            get { return h; }
+            set
+            {
+                h = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HashBrowns"));
+            }
+        }
         /// <summary>
         /// gets/sets Pancake bool
         /// </summary>
-        public bool Pancake { get; set; } = true;
+        private bool p = true;
+        public bool Pancake
+        {
+            get { return p; }
+            set
+            {
+                p = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pancake"));
+            }
+        }
 
         /// <summary>
         /// gets price of entree

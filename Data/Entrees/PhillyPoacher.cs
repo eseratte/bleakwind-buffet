@@ -6,26 +6,59 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class PhillyPoacher : Entree, IOrderItem
+
+    public class PhillyPoacher : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets Sirloin bool
+        /// invokes PropertyChanged event handler when Sirloin changes
         /// </summary>
-        public bool Sirloin { get; set; } = true;
+        private bool s = true;
+        public bool Sirloin
+        {
+            get { return s; }
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sirloin"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Onion bool
+        /// invokes PropertyChanged event handler when Onion changes
         /// </summary>
-        public bool Onion { get; set; } = true;
+        private bool o = true;
+        public bool Onion
+        {
+            get { return o; }
+            set
+            {
+                o = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Onion"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Roll bool
         /// </summary>
-        public bool Roll { get; set; } = true;
+        private bool r = true;
+        public bool Roll
+        {
+            get { return r; }
+            set
+            {
+                r = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Roll"));
+            }
+        }
 
         /// <summary>
         /// gets price of entree

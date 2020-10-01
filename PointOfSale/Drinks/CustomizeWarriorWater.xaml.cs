@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BleakwindBuffet.Data.Drinks;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -14,27 +15,27 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for MenuItemCustomization.xaml
+    /// Interaction logic for CustomizeWarriorWater.xaml
     /// </summary>
-    public partial class MenuItemCustomization : UserControl
+    public partial class CustomizeWarriorWater : UserControl
     {
-        public MenuItemCustomization()
+        WarriorWater w = new WarriorWater();
+
+        public CustomizeWarriorWater()
         {
             InitializeComponent();
         }
-
-       void GoBackToItemSelect (object sender, RoutedEventArgs e)
+        void GoBackToItemSelect(object sender, RoutedEventArgs e)
         {
             var mainMenu = new MenuItemSelection();
-            customizationBorder.Child = mainMenu;           
+            customizationBorder.Child = mainMenu;
         }
 
         void CancelOrder(object sender, RoutedEventArgs e)
         {
             var mainMenu = new MenuItemSelection();
             customizationBorder.Child = mainMenu;
-            //will empty order summary here once implemented
-
         }
+
     }
 }

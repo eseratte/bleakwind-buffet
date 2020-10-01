@@ -7,30 +7,72 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmelette : Entree, IOrderItem
+    public class GardenOrcOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
-        /// <summary>
-        /// gets/sets Broccoli bool
-        /// </summary>
-        public bool Broccoli { get; set; } = true;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// gets/sets Mushrooms bool
+        /// gets/sets Broccoli bool
+        /// invokes PropertyChanged event handler when Broccoli changes
         /// </summary>
-        public bool Mushrooms { get; set; } = true;
+        private bool b = true;
+        public bool Broccoli
+        {
+            get { return b; }
+            set
+            {
+                b = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+            }
+        }
+        /// <summary>
+        /// gets/sets Mushrooms bool
+        /// invokes PropertyChanged event handler when Mushrooms changes
+        /// </summary>
+        private bool m = true;
+        public bool Mushrooms
+        {
+            get { return m; }
+            set
+            {
+                m = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Tomato bool
+        /// invokes PropertyChanged event handler when Tomato changes
         /// </summary>
-        public bool Tomato { get; set; } = true;
+        private bool t = true;
+        public bool Tomato
+        {
+            get { return t; }
+            set
+            {
+                t = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+            }
+        }
 
         /// <summary>
         /// gets/sets Cheddar bool
+        /// invokes PropertyChanged event handler when Cheddar changes
         /// </summary>
-        public bool Cheddar { get; set; } = true;
+        private bool c = true;
+        public bool Cheddar
+        {
+            get { return c; }
+            set
+            {
+                c = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+            }
+        }
 
         /// <summary>
         /// gets price of entree

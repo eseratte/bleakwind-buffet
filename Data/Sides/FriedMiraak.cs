@@ -7,16 +7,30 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class FriedMiraak : Side, IOrderItem
+    public class FriedMiraak : Side, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// gets/sets size
+        /// invokes PropertyChanged event handler when Size changes
         /// </summary>
-        public override Size Size { get; set; } = Enums.Size.Small;
+        private Size s = Enums.Size.Small;
+        public override Size Size
+        {
+            get { return s; }
+
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
+        }
 
         /// <summary>
         /// gets price
@@ -26,9 +40,21 @@ namespace BleakwindBuffet.Data.Sides
             get
             {
                 double price = 0;
-                if (Size == Size.Small) price = 1.78;
-                if (Size == Size.Medium) price = 2.01;
-                if (Size == Size.Large) price = 2.88;
+                if (Size == Size.Small) 
+                {
+                    price = 1.78;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Medium)
+                {
+                    price = 2.01;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
+                if (Size == Size.Large)
+                {
+                    price = 2.88;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                }
                 return price;
             }
         }
@@ -41,9 +67,21 @@ namespace BleakwindBuffet.Data.Sides
             get
             {
                 uint calories = 0;
-                if (Size == Size.Small) calories = 151;
-                if (Size == Size.Medium) calories = 236;
-                if (Size == Size.Large) calories = 306;
+                if (Size == Size.Small)
+                {
+                    calories = 151;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
+                if (Size == Size.Medium)
+                {
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                    calories = 236;
+                }
+                if (Size == Size.Large) 
+                { 
+                    calories = 306;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                }
                 return calories;
             }
         }

@@ -7,26 +7,60 @@
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class WarriorWater : Drink, IOrderItem
+    public class WarriorWater : Drink, IOrderItem, INotifyPropertyChanged
     {
-        /// <summary>
-        /// gets/sets ice
-        /// </summary>
-        public bool Ice { get; set; } = true;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// gets/sets size
+        /// gets/sets ice
+        /// invokes PropertyChanged event handler when Ice changes
         /// </summary>
-        public override Size Size { get; set; } = Size.Small;
+        private bool i = true;
+        public bool Ice
+        {
+            get { return i; }
+            set
+            {
+                i = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+            }
+        }
 
         /// <summary>
         /// gets/sets lemon
+        /// invokes PropertyChanged event handler when Lemon changes
         /// </summary>
-        public bool Lemon { get; set; } = false;
+        private bool l = true;
+        public bool Lemon
+        {
+            get { return l; }
+            set
+            {
+                l = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lemon"));
+            }
+        }
+
+        /// <summary>
+        /// gets/sets size
+        /// invokes PropertyChanged event handler when Size changes
+        /// </summary>
+        private Size s = Enums.Size.Small;
+        public override Size Size
+        {
+            get { return s; }
+
+            set
+            {
+                s = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+            }
+        }
 
         /// <summary>
         /// gets drink price
