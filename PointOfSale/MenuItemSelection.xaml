@@ -28,7 +28,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <!--Entrees-->
-        <Button Click="CustomizeItem">Briarhear Burger</Button>
+        <Button Click="CustomizeItem">Briarheart Burger</Button>
         <Button Click="DoubleDraugrCustomization" Grid.Column="1">Draugr Double</Button>
         <Button Click="CustomizeThalmorTriple" Grid.Column="2">Thalmor Triple</Button>
         <Button Click="CustomizeSmokehouseSkeleton" Grid.Column="3">Smokehouse Skeleton</Button>

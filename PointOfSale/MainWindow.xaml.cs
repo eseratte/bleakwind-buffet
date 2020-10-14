@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BleakwindBuffet.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
+            //OrderControl.DataContext = new Order();
         }
 
         void CancelOrder(object sender, RoutedEventArgs e)

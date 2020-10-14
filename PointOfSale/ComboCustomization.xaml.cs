@@ -1,5 +1,4 @@
-﻿using BleakwindBuffet.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,14 +14,13 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for OrderControl.xaml
+    /// Interaction logic for ComboCustomization.xaml
     /// </summary>
-    public partial class OrderControl : UserControl
+    public partial class ComboCustomization : UserControl
     {
-        public OrderControl()
+        public ComboCustomization()
         {
             InitializeComponent();
-            DataContext = new Order(); 
         }
     }
 }
