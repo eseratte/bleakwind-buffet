@@ -1,0 +1,68 @@
+﻿@page
+@model IndexModel
+@using BleakwindBuffet.Data
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Bleakwind Buffet</h1>
+<br/>
+<p>We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim. 
+    Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas. 
+    Hack into a Smokehouse Skeleton with your dagger. 
+    Or vanquish the the mighty Thalmor Triple Burger! 
+    You’ve had a hard adventure and earned your loot, so spend it with us!.</p>
+
+<h2>Entrees</h2>
+<div class="menu-item">
+    @foreach(BleakwindBuffet.Data.Entrees.Entree entree in BleakwindBuffet.Data.Menu.Entrees())
+    {
+        <div>@entree.ToString()</div>
+        <div>Calories: @entree.Calories</div>
+        <div>Price: $@entree.Price</div>
+    }
+</div>
+
+<br/>
+
+<h2>Sides</h2>
+<div class="menu-item">
+    @foreach (BleakwindBuffet.Data.Sides.Side side in BleakwindBuffet.Data.Menu.Sides())
+    {
+    <div>@side.ToString()</div>
+    <div>Calories: @side.Calories</div>
+    <div>Price: $@side.Price</div>
+}   
+</div>
+
+<br/>
+
+<h2>Drinks</h2>
+<div class="menu-item">
+    @foreach (BleakwindBuffet.Data.Drinks.Drink drink in BleakwindBuffet.Data.Menu.Drinks())
+    {
+            <div>@drink.ToString()</div>
+            <div>Calories: @drink.Calories</div>
+            <div>Price: $@drink.Price</div>
+        }
+        
+
+</div>
+<br/>
+
+
+
+<h2>Combo Details</h2>
+<p>Any entree, side, and drink can be combined into a Combo for a $1 discount.</p>
+<br/>
+
+<h2>Soda Flavors</h2>
+<p>In addition to the delicious Cherry flavor listed on our menu, Sailor Soda comes in these delectable varieties.</p>
+<ul>
+    <li>Blackberry</li>
+    <li>Cherry</li>
+    <li>Grapefruit</li>
+    <li>Lemon</li>
+    <li>Peach</li>
+    <li>Watermelon</li>
+</ul>
