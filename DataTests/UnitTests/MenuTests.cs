@@ -47,7 +47,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldReturnCorrectDrinkList()
         {
             List<IOrderItem> drinkList = Menu.Drinks();
-            Assert.Equal(5, drinkList.Count);
+            Assert.Equal(15, drinkList.Count);
             /*AretinoAppleJuice a = new AretinoAppleJuice();
             CandlehearthCoffee c = new CandlehearthCoffee();
             MarkarthMilk m = new MarkarthMilk();
@@ -84,7 +84,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldReturnCorrectSideList()
         {
             List<IOrderItem> sideList = Menu.Sides();
-            Assert.Equal(4, sideList.Count);
+            Assert.Equal(12, sideList.Count);
             /*DragonbornWaffleFries d = new DragonbornWaffleFries();
             FriedMiraak f = new FriedMiraak();
             MadOtarGrits m = new MadOtarGrits();
@@ -110,7 +110,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldReturnFullMenu()
         {
             List<IOrderItem> fullMenu = Menu.FullMenu();
-            Assert.Equal(16, fullMenu.Count);
+            Assert.Equal(34, fullMenu.Count);
             /*
             //entrees
             BriarheartBurger b = new BriarheartBurger();
@@ -183,6 +183,96 @@ namespace BleakwindBuffet.DataTests.UnitTests
                     item => Assert.Equal(ss, item)
                 );
                 }  */                                 
+        }
+
+        [Theory]
+        [InlineData(981, 983)]
+        [InlineData(null, null)]
+        public static void CanFilterByCalorie(int? minCal, int? maxCal)
+        {
+            bool correctItemsReturned = true;
+            ThugsTBone t = new ThugsTBone();
+            List<IOrderItem> expectedItemsReturned = new List<IOrderItem>();
+            expectedItemsReturned.Add(t);
+
+            List<IOrderItem> actualItemsReturned = (List<IOrderItem>)Menu.FilterByCalories(Menu.All, minCal, maxCal);
+
+            foreach(IOrderItem item in actualItemsReturned)
+            {
+                if (expectedItemsReturned.Contains(item))
+                {
+                    correctItemsReturned = true;
+                }
+            }
+            Assert.True(correctItemsReturned);
+        }
+
+        [Theory]
+        [InlineData(6.43, 6.45)]
+        [InlineData(null, null)]
+        public static void CanFilterByPrice(double? minPrice, double? maxPrice)
+        {
+            bool correctItemsReturned = true;
+            ThugsTBone t = new ThugsTBone();
+            List<IOrderItem> expectedItemsReturned = new List<IOrderItem>();
+            expectedItemsReturned.Add(t);
+
+            List<IOrderItem> actualItemsReturned = (List<IOrderItem>)Menu.FilterByPrice(Menu.All, minPrice, maxPrice);
+
+            foreach (IOrderItem item in actualItemsReturned)
+            {
+                if (expectedItemsReturned.Contains(item))
+                {
+                    correctItemsReturned = true;
+                }
+            }
+            Assert.True(correctItemsReturned);
+        }
+
+        [Theory]
+        [InlineData("Entree")]
+        [InlineData(null)]
+        public static void CanFilterByCategory(string category)
+        {
+            bool correctItemsReturned = true;
+            ThugsTBone t = new ThugsTBone();
+            List<IOrderItem> expectedItemsReturned = new List<IOrderItem>();
+            expectedItemsReturned.Add(t);
+
+            string[] ls = new string[] { category };
+
+            List<IOrderItem> actualItemsReturned = (List<IOrderItem>)Menu.FilterByCategory(Menu.All, ls);
+
+            foreach(IOrderItem item in actualItemsReturned)
+            {
+                if (expectedItemsReturned.Contains(item))
+                {
+                    correctItemsReturned = true;
+                }
+            }
+            Assert.True(correctItemsReturned);
+        }
+
+        [Theory]
+        [InlineData("Thugs")]
+        [InlineData(null)]
+        public static void CanSearch(string terms)
+        {
+            bool correctItemsReturned = true;
+            ThugsTBone t = new ThugsTBone();
+            List<IOrderItem> expectedItemsReturned = new List<IOrderItem>();
+            expectedItemsReturned.Add(t);
+
+            List<IOrderItem> actualItemsReturned = (List<IOrderItem>)Menu.Search(terms);
+
+            foreach(IOrderItem item in actualItemsReturned)
+            {
+                if (expectedItemsReturned.Contains(item))
+                {
+                    correctItemsReturned = true;
+                }
+            }
+            Assert.True(correctItemsReturned);
         }
     }
 }

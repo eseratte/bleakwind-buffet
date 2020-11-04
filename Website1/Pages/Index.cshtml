@@ -6,16 +6,79 @@
 }
 
 <h1>Bleakwind Buffet</h1>
-<br/>
-<p>We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim. 
-    Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas. 
-    Hack into a Smokehouse Skeleton with your dagger. 
-    Or vanquish the the mighty Thalmor Triple Burger! 
-    You’ve had a hard adventure and earned your loot, so spend it with us!.</p>
+<br />
+<p>
+    We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
+    Shake the blood off your sword and slake your thirst with one of our old-fashioned sailor sodas.
+    Hack into a Smokehouse Skeleton with your dagger.
+    Or vanquish the mighty Thalmor Triple Burger!
+    You’ve had a hard adventure and earned your loot, so spend it with us!.
+</p>
 
+<form id="buffet-menu">
+    <div id="search">
+        <!--search box-->
+        <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
+        <!--submit button-->
+        <input type="submit" value="Search" />
+    </div>
+
+    <div id="filters">
+        <label>
+            <!--Entree filter checkbox-->
+            <input type="checkbox" name="Categories" value="Entree" checked="@Model.ItemCategories.Contains("Entree")"/>
+            Entrees
+        </label>
+        <label>
+            <!--Side filter checkbox-->
+            <input type="checkbox" name="Categories" value="Side" />
+            Sides
+        </label>
+        <label>
+            <!--Drink filter checkbox-->
+            <input type="checkbox" name="Categories" value="Drink" />
+            Drinks
+        </label>
+        <h4>Calories</h4>
+        <div>
+            <!--calories filter-->
+            Between
+            <input name="CalorieMin" type="number" min="0" max="982" step="1" placeholder="min" />
+            and
+            <input name="CalorieMax" type="number" min="0" max="982" step="1" placeholder="max" />
+        </div>
+        <h4>Price</h4>
+        <div>
+            <!--price filter-->
+            Between
+            <input name="PriceMin" type="number" min="0" max="100" step="0.01" placeholder="min" />
+            and
+            <input name="PriceMax" type="number" min="0" max="100" step="0.01" placeholder="max" />
+        </div>
+    </div>
+
+    <!--search results-->
+    <div id="results">
+        <h1>Item Results</h1>
+        <ul class="item-list">
+            @foreach (IOrderItem item in Model.Items)
+            {
+                <li>
+                    <div class="details">
+                        <h3 class="name">@item.ToString()</h3>
+                        <div class="calories">@item.Calories</div>
+                        <div class="price">@item.Price</div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</form>
+
+<!--full menu w/ price & calories-->
 <h2>Entrees</h2>
 <div class="menu-item">
-    @foreach(BleakwindBuffet.Data.Entrees.Entree entree in BleakwindBuffet.Data.Menu.Entrees())
+    @foreach (BleakwindBuffet.Data.Entrees.Entree entree in BleakwindBuffet.Data.Menu.Entrees())
     {
         <div>@entree.ToString()</div>
         <div>Calories: @entree.Calories</div>
@@ -23,38 +86,38 @@
     }
 </div>
 
-<br/>
+<br />
 
 <h2>Sides</h2>
 <div class="menu-item">
     @foreach (BleakwindBuffet.Data.Sides.Side side in BleakwindBuffet.Data.Menu.Sides())
     {
-    <div>@side.ToString()</div>
-    <div>Calories: @side.Calories</div>
-    <div>Price: $@side.Price</div>
-}   
+        <div>@side.ToString()</div>
+        <div>Calories: @side.Calories</div>
+        <div>Price: $@side.Price</div>
+    }
 </div>
 
-<br/>
+<br />
 
 <h2>Drinks</h2>
 <div class="menu-item">
     @foreach (BleakwindBuffet.Data.Drinks.Drink drink in BleakwindBuffet.Data.Menu.Drinks())
     {
-            <div>@drink.ToString()</div>
-            <div>Calories: @drink.Calories</div>
-            <div>Price: $@drink.Price</div>
-        }
-        
+        <div>@drink.ToString()</div>
+        <div>Calories: @drink.Calories</div>
+        <div>Price: $@drink.Price</div>
+    }
+
 
 </div>
-<br/>
+<br />
 
 
 
 <h2>Combo Details</h2>
 <p>Any entree, side, and drink can be combined into a Combo for a $1 discount.</p>
-<br/>
+<br />
 
 <h2>Soda Flavors</h2>
 <p>In addition to the delicious Cherry flavor listed on our menu, Sailor Soda comes in these delectable varieties.</p>

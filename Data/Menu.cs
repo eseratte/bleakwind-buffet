@@ -9,6 +9,7 @@ using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BleakwindBuffet.Data
@@ -110,8 +111,158 @@ namespace BleakwindBuffet.Data
             return fullMenu;
         }
 
+        /// <summary>
+        /// places every menu item into items list
+        /// </summary>
+        private static List<IOrderItem> items = FullMenu();
 
+        /// <summary>
+        /// gets all menu items in items list
+        /// </summary>
+        public static IEnumerable<IOrderItem> All { get { return items; } }
 
+        /// <summary>
+        /// searches menu for string matches, returns all items if no terms
+        /// </summary>
+        /// <param name="terms">string to search for</param>
+        /// <returns>item list</returns>
+        public static IEnumerable<IOrderItem> Search(string terms)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+            if (terms == null) return All;
+            foreach(IOrderItem item in All)
+            {
+                string name = item.ToString();
+                if(name != null && name.Contains(terms))
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        public static string[] ItemType
+        {
+            get => new string[]
+            {
+                "Entree",
+                "Side",
+                "Drink"
+            };
+        }
+
+     /// <summary>
+     /// filters nullable items by entree/side/drink
+     /// </summary>
+     /// <param name="items">items to filter</param>
+     /// <param name="Categories">category of item</param>
+     /// <returns>a list of items</returns>
+     public static IEnumerable<IOrderItem> FilterByCategory(IEnumerable<IOrderItem> items, string[] Categories)
+        {
+            //return provided list if no filter
+            if (Categories == null || Categories.Count() == 0) return items;
+            List<IOrderItem> results = new List<IOrderItem>();
+            foreach(IOrderItem item in items)
+            {               
+                if(item is BleakwindBuffet.Data.Entrees.Entree && Categories.Contains("Entree"))
+                {
+                    results.Add(item);
+                }
+
+                if (item is BleakwindBuffet.Data.Sides.Side && Categories.Contains("Side"))
+                {
+                    results.Add(item);
+                }
+
+                if (item is BleakwindBuffet.Data.Drinks.Drink && Categories.Contains("Drink"))
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// filters nullable items in list by calorie count
+        /// </summary>
+        /// <param name="items">list of items</param>
+        /// <param name="min">minimum calories</param>
+        /// <param name="max">maximum calories</param>
+        /// <returns>a list of items</returns>
+        public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> items, int? min, int? max)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+            //null check, neither specified
+            if(min == null && max == null) return items;
+            //min null check, only max specified
+            if(min == null)
+            {
+                foreach(IOrderItem item in items)
+                {
+                    if (item.Calories <= max) results.Add(item);
+                }
+                return results;
+            }
+            //max null check, only min specified
+            if(max == null)
+            {
+                foreach(IOrderItem item in items)
+                {
+                    if (item.Calories >= min) results.Add(item);
+                }
+                return results;
+            }
+            //null check, both specified
+            foreach(IOrderItem item in items)
+            {
+                if(item.Calories >= min && item.Calories <= max)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// filters nullable items by price
+        /// </summary>
+        /// <param name="items">item list</param>
+        /// <param name="min">price minimum</param>
+        /// <param name="max">price maximum</param>
+        /// <returns>a list of items</returns>
+        public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> items, double? min, double? max)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+            //null check, neither specified
+            if (min == null && max == null) return items;
+            //min null check, only max specified
+            if (min == null)
+            {
+                foreach (IOrderItem item in items)
+                {
+                    if (item.Price <= max) results.Add(item);
+                }
+                return results;
+            }
+            //max null check, only min specified
+            if (max == null)
+            {
+                foreach (IOrderItem item in items)
+                {
+                    if (item.Price >= min) results.Add(item);
+                }
+                return results;
+            }
+            //null check, both specified
+            foreach (IOrderItem item in items)
+            {
+                if (item.Price >= min && item.Price <= max)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
 
 
     }
