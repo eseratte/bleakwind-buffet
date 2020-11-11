@@ -144,5 +144,14 @@ namespace BleakwindBuffet.Data
                 return specialInstructionsList;
             }
         }
+
+        public string Description
+        {
+            get
+            {
+                string description = entree.Description + " | " + side.Description + " | " + drink.Description;
+                return description;
+            }
+        }
     }
 }

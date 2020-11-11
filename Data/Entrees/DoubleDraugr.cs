@@ -179,6 +179,18 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Double Draugr";
         }
+
+        /// <summary>
+        /// gets description of entree
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                string description = "Double patty burger on a brioche bun. Comes with ketchup, mustard, pickle, cheese, tomato, lettuce, and mayo.";
+                return description;
+            }
+        }
     }
 }
 

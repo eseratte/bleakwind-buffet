@@ -32,7 +32,10 @@ namespace BleakwindBuffet.Data
         /// <returns></returns>
         List<string> SpecialInstructions { get; }
 
-
+        /// <summary>
+        /// gets description of ordered item
+        /// </summary>
+        string Description { get; }
 
 
     }

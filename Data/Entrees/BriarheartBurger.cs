@@ -133,6 +133,18 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Briarheart Burger";
         }
+
+        /// <summary>
+        /// gets description of entree
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                string description = "Single patty burger on a brioche bun. Comes with ketchup, mustard, pickle, and cheese.";
+                return description;
+            }
+        }
     }
 }
 

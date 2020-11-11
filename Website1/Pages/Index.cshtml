@@ -58,7 +58,7 @@
     </div>
 
     <!--search results-->
-    <div id="results">
+    <div id="results" class="float-columns">
         <h1>Item Results</h1>
         <ul class="item-list">
             @foreach (IOrderItem item in Model.Items)
@@ -68,21 +68,25 @@
                         <h3 class="name">@item.ToString()</h3>
                         <div class="calories">@item.Calories</div>
                         <div class="price">@item.Price</div>
+                        <div class="description">@item.Description</div>
                     </div>
                 </li>
             }
         </ul>
     </div>
+    <div class="clearfix"></div>
 </form>
 
 <!--full menu w/ price & calories-->
 <h2>Entrees</h2>
+<div class="flex-columns">
 <div class="menu-item">
     @foreach (BleakwindBuffet.Data.Entrees.Entree entree in BleakwindBuffet.Data.Menu.Entrees())
     {
         <div>@entree.ToString()</div>
         <div>Calories: @entree.Calories</div>
         <div>Price: $@entree.Price</div>
+        <div>@entree.Description</div>
     }
 </div>
 
@@ -95,6 +99,7 @@
         <div>@side.ToString()</div>
         <div>Calories: @side.Calories</div>
         <div>Price: $@side.Price</div>
+        <div>@side.Description</div>        
     }
 </div>
 
@@ -107,10 +112,10 @@
         <div>@drink.ToString()</div>
         <div>Calories: @drink.Calories</div>
         <div>Price: $@drink.Price</div>
+        <div>@drink.Description</div>
     }
-
-
 </div>
+    </div>
 <br />
 
 
